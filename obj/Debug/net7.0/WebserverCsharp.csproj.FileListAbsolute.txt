@@ -1,0 +1,14 @@
+/home/reuter/github/WebserverCsharp/bin/Debug/net7.0/WebserverCsharp
+/home/reuter/github/WebserverCsharp/bin/Debug/net7.0/WebserverCsharp.deps.json
+/home/reuter/github/WebserverCsharp/bin/Debug/net7.0/WebserverCsharp.runtimeconfig.json
+/home/reuter/github/WebserverCsharp/bin/Debug/net7.0/WebserverCsharp.dll
+/home/reuter/github/WebserverCsharp/bin/Debug/net7.0/WebserverCsharp.pdb
+/home/reuter/github/WebserverCsharp/obj/Debug/net7.0/WebserverCsharp.GeneratedMSBuildEditorConfig.editorconfig
+/home/reuter/github/WebserverCsharp/obj/Debug/net7.0/WebserverCsharp.AssemblyInfoInputs.cache
+/home/reuter/github/WebserverCsharp/obj/Debug/net7.0/WebserverCsharp.AssemblyInfo.cs
+/home/reuter/github/WebserverCsharp/obj/Debug/net7.0/WebserverCsharp.csproj.CoreCompileInputs.cache
+/home/reuter/github/WebserverCsharp/obj/Debug/net7.0/WebserverCsharp.dll
+/home/reuter/github/WebserverCsharp/obj/Debug/net7.0/refint/WebserverCsharp.dll
+/home/reuter/github/WebserverCsharp/obj/Debug/net7.0/WebserverCsharp.pdb
+/home/reuter/github/WebserverCsharp/obj/Debug/net7.0/WebserverCsharp.genruntimeconfig.cache
+/home/reuter/github/WebserverCsharp/obj/Debug/net7.0/ref/WebserverCsharp.dll
