@@ -23,7 +23,7 @@
     {
         void Start();
     }
-
+    
  
 
     public class HttpServer : IHttpServer
@@ -37,7 +37,7 @@
             listener = new TcpListener(IPAddress.Parse("127.0.0.1"), port);
         }
 
- 
+        
 
         public void Start()
         {
@@ -68,9 +68,9 @@
                 Console.WriteLine("Incoming message:");
                 Console.WriteLine(incomingMessage);
 
- 
+               
 
-                var httpBody = $"<html><h1>Hello, world! {DateTime.Now} </h1></html>";
+                var httpBody = $"{File.ReadAllText("index.html")}";
                 var httpResonse = "HTTP/1.0 200 OK" + Environment.NewLine
                                 + "Content-Length: " + httpBody.Length + Environment.NewLine
                                 + "Content-Type: " + "text/html" + Environment.NewLine
