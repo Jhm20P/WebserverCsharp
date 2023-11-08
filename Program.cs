@@ -1,8 +1,11 @@
 ﻿namespace SimpleHttpServer
 {
     using System;
+    using System.ComponentModel.Design;
     using System.Net;
+    using System.Net.Cache;
     using System.Net.Sockets;
+    using System.Security.Cryptography.X509Certificates;
     using System.Text;
     using System.Threading;
 
@@ -24,7 +27,7 @@
         void Start();
     }
     
- 
+    
 
     public class HttpServer : IHttpServer
     {
@@ -68,15 +71,38 @@
                 Console.WriteLine("Incoming message:");
                 Console.WriteLine(incomingMessage);
 
-               
+                var fullUrl = listener.ToString() + incomingMessage.Split(' ')[1];
+                
+                string? httpBody;
+                switch (true)
+                {
+                    case true when fullUrl.Contains("/about"):
+                         httpBody = $"{File.ReadAllText("about.html")}";
 
-                var httpBody = $"{File.ReadAllText("index.html")}";
-                var httpResonse = "HTTP/1.0 200 OK" + Environment.NewLine
+                        break;
+                    case true when fullUrl.Contains("/contact"):
+                        httpBody = $"{File.ReadAllText("contacts.html")}";
+                        break;
+                    case true when fullUrl.Contains("/services"):
+                        httpBody = $"{File.ReadAllText("service.html")}";
+                        break;
+                    case true when fullUrl.Contains("/"):
+                        httpBody = $"{File.ReadAllText("index.html")}";
+                        break;
+                    default:
+                        httpBody = $"{File.ReadAllText("404.html")}";
+                        break;
+
+                }
+
+               var httpResonse = "HTTP/1.0 200 OK" + Environment.NewLine
                                 + "Content-Length: " + httpBody.Length + Environment.NewLine
                                 + "Content-Type: " + "text/html" + Environment.NewLine
                                 + Environment.NewLine
                                 + httpBody
                                 + Environment.NewLine + Environment.NewLine;
+
+                
                 Console.WriteLine("===============================================================");
                 Console.WriteLine("Response message:");
                 Console.WriteLine(httpResonse);
