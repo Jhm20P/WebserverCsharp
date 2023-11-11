@@ -1,8 +1,10 @@
 {
   "version": 2,
-  "dgSpecHash": "3bPwIJEyXuKSVvNLOc+GiuuVC+P0S5k4UYbEzXbuUEtZC15Gu8NOQaqC21pT0fFtt9mDT4kr0wFzCqc30+9BrA==",
+  "dgSpecHash": "xZqDIpMJTeECsBY0Cz1/hqIZr/x+rXvR6wtbI4T330+YQQkfbEDVu4jOsmq6OxJbc90+9W2pm++jsN3EmPyDvQ==",
   "success": true,
   "projectFilePath": "/home/reuter/github/WebserverCsharp/WebserverCsharp.csproj",
-  "expectedPackageFiles": [],
+  "expectedPackageFiles": [
+    "/home/reuter/.nuget/packages/newtonsoft.json/13.0.3/newtonsoft.json.13.0.3.nupkg.sha512"
+  ],
   "logs": []
 }

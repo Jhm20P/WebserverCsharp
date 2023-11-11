@@ -12,3 +12,6 @@
 /home/reuter/github/WebserverCsharp/obj/Debug/net7.0/WebserverCsharp.pdb
 /home/reuter/github/WebserverCsharp/obj/Debug/net7.0/WebserverCsharp.genruntimeconfig.cache
 /home/reuter/github/WebserverCsharp/obj/Debug/net7.0/ref/WebserverCsharp.dll
+/home/reuter/github/WebserverCsharp/bin/Debug/net7.0/Newtonsoft.Json.dll
+/home/reuter/github/WebserverCsharp/obj/Debug/net7.0/WebserverCsharp.csproj.AssemblyReference.cache
+/home/reuter/github/WebserverCsharp/obj/Debug/net7.0/WebserverCsharp.csproj.CopyComplete
