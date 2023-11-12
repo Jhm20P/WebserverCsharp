@@ -81,24 +81,20 @@
         public string HttpGetRequest(HttpCommand request, string path){
             if (request == HttpCommand.GET){
                 return CheckPath(path);
+            } else if (request == HttpCommand.POST){
+                return CheckPath(path);
             } else {
-                return "404";
+                return "html/404.html";
             }
         }
         public string CheckPath(string path){
-           
+           var potentialFilePath = $"{path}.html";
             if(path == "html/"){
                 return "html/index.html";  
-            } else if (!path.Contains("/favicon.ico")){
-                var potentialFilePath = $"{path}.html";
-                if (File.Exists(potentialFilePath)){
-                    return potentialFilePath;
-                } else {
-                    return "html/404.html";
-                }
+            } else if (!path.Contains("/favicon.ico") && File.Exists(potentialFilePath)){
+                return potentialFilePath;   
             } else {
                 return "html/404.html";
-                
             }
         }
 
@@ -129,37 +125,15 @@
                 
                 var requestType = GetHttpCommand(incomingMessage);
                 var path = GetPath(incomingMessage);
-                var httpResponse = HttpGetRequest(requestType, path);
+                var httpResponse  = HttpGetRequest(requestType, path);
+                
                 Console.WriteLine("---------------------------------------------------------------");
                 Console.WriteLine("Incoming message:");
                 Console.WriteLine(incomingMessage);
-
-                // var fullUrl = listener.ToString() + incomingMessage.Split(' ')[1];
-                
-                // string? httpBody;
-                // switch (true)
-                // {
-                //     case true when fullUrl.Contains("/about"):
-                //          httpBody = $"{File.ReadAllText("about.html")}";
-
-                //         break;
-                //     case true when fullUrl.Contains("/contact"):
-                //         httpBody = $"{File.ReadAllText("contacts.html")}";
-                //         break;
-                //     case true when fullUrl.Contains("/services"):
-                //         httpBody = $"{File.ReadAllText("service.html")}";
-                //         break;
-                //     case true when fullUrl.Contains("/"):
-                //         httpBody = $"{File.ReadAllText("index.html")}";
-                //         break;
-                //     default:
-                //         httpBody = $"{File.ReadAllText("404")}";
-                //         break;
-
-                // }
+               
                 
                var httpBody = $"{File.ReadAllText(httpResponse)}";  
-               var httpResonse = "HTTP/1.0 200 OK" + Environment.NewLine
+              var  httpResonse = $"HTTP/1.0 200 ok" + Environment.NewLine
                                 + "Content-Length: " + httpBody.Length + Environment.NewLine
                                 + "Content-Type: " + "text/html" + Environment.NewLine
                                 + Environment.NewLine
