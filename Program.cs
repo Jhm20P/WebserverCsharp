@@ -78,15 +78,19 @@
             return fullPath;
             }
 
-        public string HttpGetRequest(HttpCommand request, string path){
+        public string HttpGetRequest(HttpCommand request, string path, string incomingMessage){
             if (request == HttpCommand.GET){
                 return CheckPath(path);
             } else if (request == HttpCommand.POST){
+                var postData = GetPostData(incomingMessage);
+                Console.WriteLine(postData);
                 return CheckPath(path);
             } else {
                 return "html/404.html";
             }
         }
+
+        
         public string CheckPath(string path){
            var potentialFilePath = $"{path}.html";
             if(path == "html/"){
@@ -98,7 +102,25 @@
             }
         }
 
-
+        public Dictionary<string, string> GetPostData(string incomingMessage){
+            var splitIncommingMessage = incomingMessage.Split(Environment.NewLine);
+            bool harMødtTomtLinje = false;
+            bool harMødtTomtLinje2 = false;
+            Dictionary<string, string> dict = new Dictionary<string, string>();
+            foreach (var item in splitIncommingMessage){
+                if (item.Length == 0 ){
+                    harMødtTomtLinje = true;
+                }
+                if (harMødtTomtLinje && harMødtTomtLinje2){
+                    foreach (var item2 in item.Split('&')){
+                        
+                        var splitItem2 = item2.Split('=');
+                        dict.Add(splitItem2[0], splitItem2[1]);
+                    }
+                }
+            }
+            return dict;
+        }
         public void Start()
         {
             int i = 0;
@@ -125,13 +147,12 @@
                 
                 var requestType = GetHttpCommand(incomingMessage);
                 var path = GetPath(incomingMessage);
-                var httpResponse  = HttpGetRequest(requestType, path);
+                var httpResponse  = HttpGetRequest(requestType, path, incomingMessage);
                 
                 Console.WriteLine("---------------------------------------------------------------");
                 Console.WriteLine("Incoming message:");
                 Console.WriteLine(incomingMessage);
-               
-                
+
                var httpBody = $"{File.ReadAllText(httpResponse)}";  
               var  httpResonse = $"HTTP/1.0 200 ok" + Environment.NewLine
                                 + "Content-Length: " + httpBody.Length + Environment.NewLine
