@@ -86,22 +86,16 @@
             }
         }
         public string CheckPath(string path){
-            // if (path == "/html/about"){
-            //     return "html/about.html";
-            // } else if (path == "/html/contact"){
-            //     return "html/contacts.html";
-            // } else if (path == "/html/services"){
-            //     return "html/service.html";
-            //  }if(path == "/html/"){
-            //     return "html/index.html";
-            // } else {
-            //     return "html/404.html";
-            // }
-            // var lastPath = path.Split('/')[2];
-            if(path == path){
-                return $"{path}.html";
-            } else if (path == "/"){
-                return "html/index.html";
+           
+            if(path == "html/"){
+                return "html/index.html";  
+            } else if (!path.Contains("/favicon.ico")){
+                var potentialFilePath = $"{path}.html";
+                if (File.Exists(potentialFilePath)){
+                    return potentialFilePath;
+                } else {
+                    return "html/404.html";
+                }
             } else {
                 return "html/404.html";
                 
